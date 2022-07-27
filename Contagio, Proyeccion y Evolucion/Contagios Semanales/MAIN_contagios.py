@@ -24,3 +24,9 @@ F.informe_pais(Casos_W,Deads_W,'United States').to_excel('USA.xlsx')
 F.informe_pais(Casos_W,Deads_W,'Venezuela').to_excel('Venezuela.xlsx')
 
 print('**** BDs CONTAGIOS PROCESADAS Y EXPORTADAS!****')
+
+print('****CREANDO Y EXPORTANDO GRAFICOS BDs CONTAGIOS ****')
+
+F.grafica_casos(F.Valpo(Casos_Ch,UCI_Ch,Deads_Ch),F.Chile(Casos_Ch,UCI_Ch,Deads_Ch))
+F.grafica_uci(F.Valpo(Casos_Ch,UCI_Ch,Deads_Ch),F.Chile(Casos_Ch,UCI_Ch,Deads_Ch))
+F.grafica_deads(F.Valpo(Casos_Ch,UCI_Ch,Deads_Ch),F.Chile(Casos_Ch,UCI_Ch,Deads_Ch))
