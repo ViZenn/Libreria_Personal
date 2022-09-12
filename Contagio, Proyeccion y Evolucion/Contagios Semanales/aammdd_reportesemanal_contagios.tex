@@ -1,0 +1,338 @@
+\documentclass{article}
+\usepackage[spanish, es-tabla]{babel}
+
+\usepackage[utf8]{inputenc}
+
+%\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+%% Sets page size and margins
+\usepackage[letterpaper,top=2.5cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm,  headsep=0.2cm, headheight=2cm]{geometry}
+
+%% Useful packages
+\usepackage{verbatim} % citar
+\usepackage{import}   %importar
+%\usepackage{amsmath}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{booktabs, makecell}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[hang, small,up,textfont=it,up]{caption} 
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\renewcommand{\tablename}{Tabla}
+\usepackage{authblk}
+\usepackage{csquotes}    %citas
+\usepackage{tikz}         %arboles
+\usetikzlibrary{trees}
+
+\renewenvironment{quote}
+  {\small\list{}{\rightmargin=3.5cm \leftmargin=3.5cm}%
+   \item\relax}
+  {\endlist}
+
+% Marca de Agua
+%\usepackage{draftwatermark}
+%\SetWatermarkText{Borrador}
+%\SetWatermarkScale{4}
+
+% Enumeración
+\usepackage{enumitem}
+%\setenumerate[1]{label=\thesubsection.\arabic*}
+
+%\setenumerate[2]{label*=\arabic*.}
+%\makeatletter
+%\renewcommand{\@seccntformat}[1]{}
+%\makeatother
+
+%cabecera y pies
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\includegraphics[width=0.12\textwidth]{logo_E.jpg}}
+\lhead{
+Reporte semanal situación contagios COVID-19 \\ 
+Dr E. Céspedes, Científico de Datos SEREMI \\
+SEREMI V Región \\
+2022}
+\rfoot{P\'agina \thepage}
+
+% titulo documento (arreglar para que quede en 2 lineas y agregar fecha )
+\title{\textbf{REPORTE SEMANAL SITUACION COVID-19 REGIÓN DE VALPARAÍSO}}
+\author{Dr. Egidio Céspedes}
+\date{Fecha Informe: 12 de Septiembre de 2022\\
+Fecha de Corte: 11 de Septiembre de 2022}
+
+\begin{document}
+
+\maketitle
+
+%subtitulo
+\section{Resumen Ejecutivo de Tendencias COVID para la Región de Valparaíso}
+
+Semana corresponde a fecha calendario. Para el caso de Chile, los casos nuevos, la ocupación de camas UCI y la cantidad de fallecidos son los informados diariamente por Minsal. Para el resto de países, es la información diaria dada por sus respectivos Ministerios de Salud. Para efectos de cálculo se utiliza como unidad de análisis la cantidad acumulada de cada semana. El valor Promedio es un estimado del semanal. El valor ‘velocidad semanal’, corresponde a un indicador propio (variación porcentual) para cada variable, el que es calculado según la semana previa de cada dato.
+
+%}Tabla datos Valpo
+\begin{table}[H]
+  \centering
+  \resizebox{\textwidth}{!}{
+\begin{tabular}{ll|ccc|ccc|ccc}
+
+&  & \multicolumn{3}{c}{Casos Nuevos} & \multicolumn{3}{c}{Ocupación UCI} & \multicolumn{3}{c}{Fallecimientos}  \\
+{} &  &  Promedio &  Total  & Velocidad &  Promedio &  Total  & Velocidad &  Promedio &  Total  & Velocidad  \\
+   &  &  Diario   &  Semana & Semanal   &  Diario   &  Semana & Semanal   &  Diario   &  Semana & Semanal \\
+
+\midrule
+  \input{Valparaiso}
+\end{tabular}
+}
+  \caption{Datos calculados para Región de Valparaíso}
+  \label{tab:Tabla1}
+\end{table}
+
+%subtitulo
+\section{Resumen Ejecutivo de Tendencias COVID a Nivel Nacional}
+
+%}Tabla datos Chile
+\begin{table}[H]
+  \centering
+  \resizebox{\textwidth}{!}{
+\begin{tabular}{ll|ccc|ccc|ccc}
+
+&  & \multicolumn{3}{c}{Casos Nuevos} & \multicolumn{3}{c}{Ocupación UCI} & \multicolumn{3}{c}{Fallecimientos }  \\
+{} &  &  Promedio &  Total  & Velocidad &  Promedio &  Total  & Velocidad &  Promedio &  Total  & Velocidad  \\
+   &  &  Diario   &  Semana & Semanal   &  Diario   &  Semana & Semanal   &  Diario   &  Semana & Semanal \\
+
+\midrule
+  \input{Chile}
+\end{tabular}
+}
+  \caption{Datos calculados para Chile}
+  \label{tab:Tabla2}
+\end{table}
+
+%subtitulo
+\section{Resumen Ejecutivo de Tendencias COVID a Nivel Mundial}
+
+%}Tabla datos Argentina
+\begin{table}[H]
+  \centering
+  \resizebox{\textwidth}{!}{
+\begin{tabular}{ll|ccc|ccc}
+
+&  & \multicolumn{3}{c}{Casos Nuevos} & \multicolumn{3}{c}{Fallecimientos}  \\
+{} &  &  Promedio &  Total  & Velocidad &  Promedio &  Total  & Velocidad  \\
+   &  &  Diario   &  Semana & Semanal   &  Diario   &  Semana & Semanal   \\
+
+\midrule
+  \input{Argentina}
+\end{tabular}
+}
+  \caption{Datos calculados para Argentina}
+  \label{tab:Tabla3}
+\end{table}
+
+%}Tabla datos Colombia
+\begin{table}[H]
+  \centering
+  \resizebox{\textwidth}{!}{
+\begin{tabular}{ll|ccc|ccc}
+
+&  & \multicolumn{3}{c}{Casos Nuevos} & \multicolumn{3}{c}{Fallecimientos}  \\
+{} &  &  Promedio &  Total  & Velocidad &  Promedio &  Total  & Velocidad  \\
+   &  &  Diario   &  Semana & Semanal   &  Diario   &  Semana & Semanal   \\
+
+\midrule
+  \input{Colombia}
+\end{tabular}
+}
+  \caption{Datos calculados para Colombia}
+  \label{tab:Tabla4}
+\end{table}
+
+%}Tabla datos Haití
+\begin{table}[H]
+  \centering
+  \resizebox{\textwidth}{!}{
+\begin{tabular}{ll|ccc|ccc}
+
+&  & \multicolumn{3}{c}{Casos Nuevos} & \multicolumn{3}{c}{Fallecimientos}  \\
+{} &  &  Promedio &  Total  & Velocidad &  Promedio &  Total  & Velocidad  \\
+   &  &  Diario   &  Semana & Semanal   &  Diario   &  Semana & Semanal   \\
+
+\midrule
+  \input{Haiti}
+\end{tabular}
+}
+  \caption{Datos calculados para Haití}
+  \label{tab:Tabla5}
+\end{table}
+
+%}Tabla datos Perú
+\begin{table}[H]
+  \centering
+  \resizebox{\textwidth}{!}{
+\begin{tabular}{ll|ccc|ccc}
+
+&  & \multicolumn{3}{c}{Casos Nuevos} & \multicolumn{3}{c}{Fallecimientos}  \\
+{} &  &  Promedio &  Total  & Velocidad &  Promedio &  Total  & Velocidad  \\
+   &  &  Diario   &  Semana & Semanal   &  Diario   &  Semana & Semanal   \\
+
+\midrule
+  \input{Peru}
+\end{tabular}
+}
+  \caption{Datos calculados para Perú}
+  \label{tab:Tabla6}
+\end{table}
+
+%}Tabla datos Estados Unidos
+\begin{table}[H]
+  \centering
+  \resizebox{\textwidth}{!}{
+\begin{tabular}{ll|ccc|ccc}
+
+&  & \multicolumn{3}{c}{Casos Nuevos} & \multicolumn{3}{c}{Fallecimientos}  \\
+{} &  &  Promedio &  Total  & Velocidad &  Promedio &  Total  & Velocidad  \\
+   &  &  Diario   &  Semana & Semanal   &  Diario   &  Semana & Semanal   \\
+
+\midrule
+  \input{USA}
+\end{tabular}
+}
+  \caption{Datos calculados para Estados Unidos}
+  \label{tab:Tabla7}
+\end{table}
+
+%}Tabla datos Venezuela
+\begin{table}[H]
+  \centering
+  \resizebox{\textwidth}{!}{
+\begin{tabular}{ll|ccc|ccc}
+
+&  & \multicolumn{3}{c}{Casos Nuevos} & \multicolumn{3}{c}{Fallecimientos}  \\
+{} &  &  Promedio &  Total  & Velocidad &  Promedio &  Total  & Velocidad  \\
+   &  &  Diario   &  Semana & Semanal   &  Diario   &  Semana & Semanal   \\
+
+\midrule
+  \input{Venezuela}
+\end{tabular}
+}
+  \caption{Datos calculados para Venezuela}
+  \label{tab:Tabla8}
+\end{table}
+
+%hasta acá todo bienn
+
+%subtitulo
+\section{Resumen Gráfico de Evolución Casos Nuevos para la Región de Valparaíso y a Nivel Nacional}
+
+A continuación se muestra la evolución de casos nuevos y velocidad de contagio semanal para la región de Valparaíso y territorio nacional.
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{Barra_Linea_Casos_Valpo}
+	\centering
+	\caption{Informe epidemiologico periódico \\ Casos nuevos para la Región de Valparaíso}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{Barra_Linea_Casos_Chile}
+	\centering
+	\caption{Informe epidemiologico periódico \\ Casos nuevos a nivel nacional}
+\end{figure}
+
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+
+\section{Resumen Gráfico de Ocupación de Camas UCI para la \\ Región de Valparaíso y a Nivel Nacional}
+
+A continuación se muestra la evolución de ocupación de camas UCI y velocidad de uso semanal para la región de Valparaíso y territorio nacional.
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{Barra_Linea_UCI_valpo}
+	\centering
+	\caption{Informe epidemiologico periódico \\ Ocupación de camas UCI para Región de Valparaíso}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{Barra_Linea_UCI_chile}
+	\centering
+	\caption{Informe epidemiologico periódico \\ Ocupación camas UCI para a nivel nacional}
+\end{figure}
+
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+
+\section{Resumen Gráfico de Fallecimientos para la Región de \\ Valparaíso y a Nivel Nacional}
+
+A continuación se muestra la evolución de los fallecimientos y velocidad de defunción para la región de Valparaíso y territorio nacional.
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{Barra_Linea_Deads_valpo}
+	\centering
+	\caption{Informe epidemiologico periódico \\ Fallecimientos para la Región de Valparaíso}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{Barra_Linea_Deads_chile}
+	\centering
+	\caption{Informe epidemiologico periódico \\ Fallecimientos para a nivel nacional}
+\end{figure}
+
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+
+%subtitulo
+\section{Resumen Gráfico de Tendencias COVID a Nivel \\ Internacional}
+
+Los siguientes gráficos muestran la evolución por país y comparación entre países de casos nuevos de contagio y fallecimientos en escala logarítmica.
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{Barras Log Paises Casos}
+	\centering
+	\caption{Informe epidemiologico periódico \\ Evolución casos nuevos para Chile y el resto del mundo}
+
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=\textwidth]{Barras Log Paises Deads}
+	\centering
+	\caption{Informe epidemiologico periódico \\ Evolución fallecimientos para Chile y el resto del mundo}
+
+\end{figure}
+
+\end{document}
